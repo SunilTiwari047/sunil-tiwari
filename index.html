@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunil Tiwari | Senior Lecturer, University of Bristol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-mid: #4a4540;
+    --ink-muted: #8a8580;
+    --cream: #faf8f4;
+    --warm-white: #ffffff;
+    --accent: #8b3a2a;
+    --accent-light: #f4ebe6;
+    --rule: #e0d9d0;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.78; }
+
+  /* ══════════════════════════════════════
+     NAV
+  ══════════════════════════════════════ */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,248,244,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+  }
+  nav ul { display:flex; flex-wrap:wrap; list-style:none; max-width:980px; margin:0 auto; min-height:52px; align-items:center; gap:0; }
+  nav a { display:block; padding:0.35rem 0.7rem; font-size:0.75rem; font-weight:400; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-mid); text-decoration:none; transition:color 0.2s; white-space:nowrap; }
+  nav a:hover, nav a.active { color:var(--accent); }
+  .nav-name { font-family:var(--serif); font-size:0.95rem; font-style:italic; letter-spacing:0; text-transform:none; font-weight:400; color:var(--ink); margin-right:0.5rem; }
+  .nav-sep { margin-left:auto; }
+
+  /* ══════════════════════════════════════
+     LAYOUT
+  ══════════════════════════════════════ */
+  main { max-width: 900px; margin: 0 auto; padding: 0 2rem 7rem; }
+
+  section {
+    padding-top: 4rem;
+    border-top: 1px solid var(--rule);
+    margin-top: 4rem;
+  }
+  section:first-of-type { border-top:none; margin-top:0; padding-top:3.5rem; }
+
+  h2 { font-family:var(--serif); font-size:1.55rem; font-weight:500; letter-spacing:-0.01em; margin-bottom:1.75rem; }
+  h3 { font-family:var(--serif); font-size:1.05rem; font-weight:500; margin-bottom:0.5rem; }
+
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  .hero { display:grid; grid-template-columns:1fr 195px; gap:3rem; align-items:start; }
+  .hero-text h1 { font-family:var(--serif); font-size:2.4rem; font-weight:500; line-height:1.18; letter-spacing:-0.015em; margin-bottom:0.3rem; }
+  .hero-text .title { font-size:0.88rem; color:var(--ink-mid); letter-spacing:0.04em; margin-bottom:0.15rem; }
+  .hero-text .institution { font-size:0.88rem; color:var(--accent); font-weight:400; margin-bottom:1.6rem; }
+  .bio-text { font-size:0.97rem; color:var(--ink-mid); }
+  .bio-text p + p { margin-top:1rem; }
+
+  .contact-links { display:flex; flex-wrap:wrap; gap:0.45rem; margin-top:1.75rem; }
+  .contact-links a {
+    display:inline-flex; align-items:center; gap:0.3rem;
+    font-size:0.75rem; font-weight:400; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink-mid); text-decoration:none;
+    padding:0.38rem 0.85rem;
+    border:1px solid var(--rule); border-radius:2px;
+    background:var(--warm-white); transition:all 0.2s;
+  }
+  .contact-links a:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-light); }
+
+  .photo-frame { width:195px; }
+  .photo-frame img { width:100%; display:block; filter:grayscale(12%) contrast(1.06); }
+  .photo-meta { margin-top:0.7rem; font-size:0.73rem; color:var(--ink-muted); line-height:1.55; }
+
+  /* ══════════════════════════════════════
+     RESEARCH OVERVIEW CARDS
+  ══════════════════════════════════════ */
+  .research-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  .research-card {
+    background:var(--warm-white); border:1px solid var(--rule);
+    border-left:3px solid var(--accent); padding:1.2rem 1.35rem;
+  }
+  .research-card h3 { font-family:var(--serif); font-size:0.95rem; font-weight:600; color:var(--ink); margin-bottom:0.35rem; }
+  .research-card p { font-size:0.86rem; color:var(--ink-mid); line-height:1.6; }
+
+  .phd-note {
+    margin-top:1.75rem; padding:1.1rem 1.4rem;
+    background:var(--accent-light); border-left:3px solid var(--accent);
+    font-size:0.88rem; color:var(--ink-mid);
+  }
+  .phd-note strong { display:block; color:var(--ink); font-weight:500; margin-bottom:0.35rem; }
+
+  /* ══════════════════════════════════════
+     RESEARCH STREAMS (Gaur-style)
+  ══════════════════════════════════════ */
+  .streams-intro {
+    font-size:0.97rem; color:var(--ink-mid); max-width:640px;
+    line-height:1.78; margin-bottom:3rem;
+    padding-bottom:2rem; border-bottom:1px solid var(--rule);
+  }
+
+  .stream { margin-bottom:0; }
+  .stream + .stream { border-top:1px solid var(--rule); padding-top:3.5rem; margin-top:3.5rem; }
+
+  .stream-header { display:flex; gap:1.75rem; align-items:baseline; margin-bottom:1.5rem; }
+  .stream-number { font-family:var(--serif); font-size:2.8rem; font-weight:400; color:var(--rule); line-height:1; flex-shrink:0; }
+  .stream-title { font-family:var(--serif); font-size:1.45rem; font-weight:500; line-height:1.25; letter-spacing:-0.01em; }
+
+  .stream-body { display:grid; grid-template-columns:1fr 270px; gap:2.75rem; align-items:start; }
+
+  .stream-prose p { font-size:0.97rem; color:var(--ink-mid); line-height:1.82; margin-bottom:1rem; }
+  .stream-prose p:last-child { margin-bottom:0; }
+  .stream-prose a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:border-color 0.2s; }
+  .stream-prose a:hover { border-bottom-color:var(--accent); }
+
+  .pull-quote {
+    margin:1.4rem 0; padding:1rem 1.3rem;
+    border-left:3px solid var(--accent); background:var(--accent-light);
+    font-family:var(--serif); font-size:0.95rem; font-style:italic;
+    color:var(--ink-mid); line-height:1.68;
+  }
+
+  /* paper sidebar */
+  .sidebar-label { font-size:0.68rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:0.8rem; }
+  .paper-card {
+    background:var(--warm-white); border:1px solid var(--rule);
+    border-left:3px solid var(--accent); padding:0.9rem 1rem; margin-bottom:0.8rem;
+  }
+  .paper-title { font-family:var(--serif); font-size:0.86rem; font-weight:500; line-height:1.42; margin-bottom:0.25rem; color:var(--ink); }
+  .paper-meta { font-size:0.75rem; color:var(--ink-muted); line-height:1.4; }
+  .paper-meta em { font-style:italic; }
+  .paper-tag { display:inline-block; margin-top:0.25rem; font-size:0.68rem; color:var(--accent); border:1px solid var(--accent); padding:0.06rem 0.38rem; }
+
+  .collab-strip {
+    margin-top:1.25rem; padding:0.8rem 1rem;
+    background:var(--cream); border:1px solid var(--rule);
+    font-size:0.8rem; color:var(--ink-muted);
+  }
+  .collab-strip strong { display:block; color:var(--ink-mid); font-weight:500; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.2rem; }
+
+  /* ══════════════════════════════════════
+     TIMELINE (positions + education)
+  ══════════════════════════════════════ */
+  .timeline { display:flex; flex-direction:column; }
+  .tl-item { display:grid; grid-template-columns:155px 1fr; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--rule); }
+  .tl-item:last-child { border-bottom:none; }
+  .tl-dates { font-size:0.76rem; color:var(--ink-muted); padding-top:0.15rem; font-weight:400; letter-spacing:0.02em; }
+  .tl-role { font-weight:500; font-size:0.93rem; color:var(--ink); line-height:1.3; }
+  .tl-place { font-size:0.86rem; color:var(--ink-mid); margin-top:0.12rem; }
+  .tl-note { font-size:0.8rem; color:var(--ink-muted); margin-top:0.12rem; font-style:italic; }
+
+  /* ══════════════════════════════════════
+     PUBLICATIONS LIST
+  ══════════════════════════════════════ */
+  .pub-group { margin-bottom:2.25rem; }
+  .pub-group-label {
+    display:inline-flex; align-items:center;
+    font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--warm-white); background:var(--accent);
+    padding:0.22rem 0.7rem; margin-bottom:0.9rem;
+  }
+  .pub-list { list-style:none; }
+  .pub-item { padding:0.9rem 0; border-bottom:1px solid var(--rule); display:grid; grid-template-columns:26px 1fr; gap:0.7rem; align-items:start; }
+  .pub-item:last-child { border-bottom:none; }
+  .pub-num { font-size:0.73rem; color:var(--ink-muted); text-align:right; padding-top:0.15rem; }
+  .pub-authors { font-size:0.83rem; color:var(--ink-mid); margin-bottom:0.18rem; }
+  .pub-authors strong { color:var(--ink); font-weight:500; }
+  .pub-title-pub { font-size:0.9rem; font-weight:500; color:var(--ink); font-family:var(--serif); line-height:1.38; margin-bottom:0.18rem; }
+  .pub-venue { font-size:0.8rem; color:var(--ink-muted); font-style:italic; }
+  .pub-badge { display:inline-block; font-size:0.66rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.08rem 0.38rem; margin-left:0.4rem; vertical-align:middle; }
+  .pub-more { margin-top:1.1rem; font-size:0.86rem; color:var(--ink-muted); }
+  .pub-more a { color:var(--accent); text-decoration:none; }
+  .pub-more a:hover { text-decoration:underline; }
+
+  /* ══════════════════════════════════════
+     GRANTS
+  ══════════════════════════════════════ */
+  .grant-list { list-style:none; }
+  .grant-item { padding:0.9rem 0; border-bottom:1px solid var(--rule); display:grid; grid-template-columns:72px 1fr; gap:1rem; align-items:start; }
+  .grant-item:last-child { border-bottom:none; }
+  .grant-amount { font-family:var(--serif); font-size:0.92rem; font-weight:600; color:var(--accent); padding-top:0.1rem; }
+  .grant-title { font-size:0.91rem; font-weight:500; color:var(--ink); margin-bottom:0.18rem; }
+  .grant-meta { font-size:0.8rem; color:var(--ink-muted); }
+
+  /* ══════════════════════════════════════
+     TEACHING
+  ══════════════════════════════════════ */
+  .teaching-block { margin-bottom:1.75rem; }
+  .teaching-block h3 { font-family:var(--sans); font-size:0.77rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:0.7rem; padding-bottom:0.38rem; border-bottom:1px solid var(--rule); }
+  .course-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.45rem 0; border-bottom:1px solid var(--rule); gap:1rem; }
+  .course-row:last-child { border-bottom:none; }
+  .course-name { font-size:0.9rem; color:var(--ink); }
+  .course-role { font-size:0.76rem; color:var(--ink-muted); font-style:italic; white-space:nowrap; }
+
+  /* ══════════════════════════════════════
+     SERVICE
+  ══════════════════════════════════════ */
+  .pro-cols { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; }
+  .pro-block h3 { font-family:var(--sans); font-size:0.75rem; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; color:var(--ink-muted); border-bottom:1px solid var(--rule); padding-bottom:0.38rem; margin-bottom:0.8rem; }
+  .pro-block ul { list-style:none; font-size:0.86rem; color:var(--ink-mid); }
+  .pro-block li { padding:0.28rem 0; border-bottom:1px dotted var(--rule); display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem; }
+  .pro-block li:last-child { border-bottom:none; }
+  .tag-year { font-size:0.73rem; color:var(--ink-muted); white-space:nowrap; }
+
+  /* ══════════════════════════════════════
+     AWARDS
+  ══════════════════════════════════════ */
+  .award-list { list-style:none; }
+  .award-item { padding:0.8rem 0; border-bottom:1px solid var(--rule); display:flex; gap:1rem; align-items:baseline; }
+  .award-item:last-child { border-bottom:none; }
+  .award-year { font-size:0.76rem; color:var(--ink-muted); min-width:44px; }
+  .award-text { font-size:0.88rem; color:var(--ink-mid); line-height:1.5; }
+
+  /* ══════════════════════════════════════
+     CONTACT
+  ══════════════════════════════════════ */
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+  .contact-block p { font-size:0.9rem; color:var(--ink-mid); line-height:1.9; }
+  .contact-block a { color:var(--accent); text-decoration:none; }
+  .contact-block a:hover { text-decoration:underline; }
+
+  /* ══════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════ */
+  footer { border-top:1px solid var(--rule); padding:1.75rem 2rem; text-align:center; font-size:0.76rem; color:var(--ink-muted); max-width:900px; margin:4rem auto 0; }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media(max-width:700px){
+    .hero { grid-template-columns:1fr; }
+    .photo-frame { width:140px; }
+    .research-grid { grid-template-columns:1fr; }
+    .tl-item { grid-template-columns:1fr; gap:0.2rem; }
+    .stream-body { grid-template-columns:1fr; }
+    .stream-number { font-size:2rem; }
+    .pro-cols { grid-template-columns:1fr; }
+    .pub-item { grid-template-columns:1fr; }
+    .pub-num { display:none; }
+    .grant-item { grid-template-columns:1fr; gap:0.2rem; }
+    .contact-grid { grid-template-columns:1fr; }
+    .course-row { flex-direction:column; gap:0.08rem; }
+    nav a { padding:0.3rem 0.45rem; font-size:0.68rem; }
+  }
+
+/* ── HEADER + TAB NAV ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,248,244,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.site-header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 64px;
+}
+.site-brand { flex-shrink: 0; }
+.site-brand .brand-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+.site-brand .brand-sub {
+  font-size: 0.75rem;
+  color: var(--ink-mid);
+  margin: 0.1rem 0 0;
+  letter-spacing: 0.01em;
+}
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  justify-content: flex-end;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--ink-mid);
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s;
+  white-space: nowrap;
+  font-family: var(--sans);
+  margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--accent); }
+.tab-btn.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 500;
+}
+/* panels */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.tab-panel section {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 3.5rem;
+}
+@media (max-width: 700px) {
+  .site-header-inner { flex-direction: column; align-items: flex-start; gap: 0; padding: 0.75rem 1rem 0; min-height: unset; }
+  .tab-nav { justify-content: flex-start; }
+  .tab-btn { font-size: 0.72rem; padding: 0.4rem 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-brand">
+      <p class="brand-name">Sunil Tiwari</p>
+      <p class="brand-sub">Operations Management &middot; University of Bristol</p>
+    </div>
+    <nav class="tab-nav" role="tablist" aria-label="Page sections">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-about" id="btn-about" onclick="switchTab('about')">About</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-research" id="btn-research" onclick="switchTab('research')">Research</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-positions" id="btn-positions" onclick="switchTab('positions')">Positions</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-publications" id="btn-publications" onclick="switchTab('publications')">Publications</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-grants" id="btn-grants" onclick="switchTab('grants')">Grants</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-teaching" id="btn-teaching" onclick="switchTab('teaching')">Teaching</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-service" id="btn-service" onclick="switchTab('service')">Service</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-awards" id="btn-awards" onclick="switchTab('awards')">Awards</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-contact" id="btn-contact" onclick="switchTab('contact')">Contact</button>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="tab-panel active" id="tab-about" role="tabpanel" aria-labelledby="btn-about">
+<section id="about">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Sunil Tiwari</h1>
+      <p class="title">Senior Lecturer in Operations Management &nbsp;·&nbsp; Programme Director, MSc Business Analytics</p>
+      <p class="institution">University of Bristol Business School</p>
+      <div class="bio-text">
+        <p>I am a Senior Lecturer in Operations Management at the University of Bristol Business School, where I also serve as Programme Director of the MSc Business Analytics. Before joining Bristol, I held academic positions at ESSCA School of Management in France (2021–2023) and the National University of Singapore (2017–2021), and was Visiting Faculty at the Institute for Manufacturing (IfM), University of Cambridge.</p>
+        <p>My research lies at the intersection of operations management and emerging technologies (such as, artificial intelligence, blockchain, and robotics). It explores how organisations can design more intelligent, equitable, and resilient supply chains — spanning healthcare and sustainability governance.</p>
+        <p>Over the years I have led industrial projects with global organisations including Procter &amp; Gamble, National Healthcare Group (Singapore), SingHealth, ST Logistics, Micron Technology, SATS Ltd., Singapore Post, POS Indonesia, and Huawei. My work has been published in leading journals including the <em>European Journal of Operational Research</em>, <em>International Journal of Production Economics</em>, <em>Transportation Research Part E</em>, <em>IEEE Transactions on Engineering Management</em>, and <em>Annals of Operations Research</em>.</p>
+        <p>I serve as Department Editor of <em>IEEE Transactions on Engineering Management</em> and Associate Editor for the <em>Journal of the Operational Research Society</em>, <em>International Transactions in Operational Research</em>, and <em>Supply Chain Analytics</em>.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sunil.tiwari@bristol.ac.uk">&#9993; Email</a>
+        <a href="https://scholar.google.com/citations?user=FocCLLYAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a href="https://www.bristol.ac.uk/people/person/Sunil-Tiwari-2fe86b81-80f7-4969-a61e-0c24efae16f7/" target="_blank">Bristol Profile</a>
+        <a href="https://www.linkedin.com/in/sunil-tiwari-2a23a83a/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div class="photo-frame">
+      <img src="https://research-information.bris.ac.uk/ws/files/390834287/Sunil_Tiwari.jpeg" alt="Dr Sunil Tiwari" />
+      <p class="photo-meta">
+        University of Bristol Business School<br>
+        11–13 Tyndalls Park Road<br>
+        Clifton, Bristol BS8 1PY, UK<br><br>
+        Tel: +44 (0)117 455 4422<br>
+        Mobile: +44 (0)78 99 41 21 41
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     RESEARCH
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-research" role="tabpanel" aria-labelledby="btn-research">
+<section id="research">
+  <h2>Research</h2>
+
+  <p class="streams-intro">My research examines how organisations design, govern, and transform supply chains — with a focus on what makes them fairer, more resilient, and better equipped for an uncertain world. I combine analytical modelling, game theory, empirical analysis, and simulation with field work to tackle problems that are both theoretically rich and practically consequential. My work spans six interconnected streams.</p>
+
+  <!-- Stream 1 -->
+  <div class="stream" id="stream-contracts">
+    <div class="stream-header">
+      <span class="stream-number">01</span>
+      <h3 class="stream-title">Buyer–Supplier Relationships, Contracts &amp; Strategic Interactions</h3>
+    </div>
+    <div class="stream-body">
+      <div class="stream-prose">
+        <p>At the heart of every supply chain is a relationship — between a buyer and a supplier, a manufacturer and a retailer, a platform and its sellers. These relationships are governed, explicitly or implicitly, by contracts: wholesale price agreements, two-part tariffs, buyback provisions, revenue-sharing clauses. My work in this stream asks how those contracts should be designed, what strategic behaviour they induce, and how information asymmetry and uncertainty change the picture.</p>
+        <p>In a series of papers with Indranil Biswas and co-authors, I have developed analytical frameworks for contract design in Industry 4.0 settings. One paper examines how a manufacturer should decide whether to introduce an <em>Industry 4.0 innovative product line</em> alongside a traditional product — characterising the critical market potential threshold at which the innovative product overtakes the traditional one in sales, even when sold at a premium. We show that under both wholesale and two-part tariff contracts, the cessation points and market potential thresholds move in opposite directions — a counter-intuitive but practically important result for firms navigating the transition to smart manufacturing.</p>
+        <div class="pull-quote">"There exists a critical market potential threshold above which the sale of the Industry 4.0 innovative product is higher than that of the traditional product, even when the former is sold at a higher price."</div>
+        <p>A second line of work examines multi-echelon supply chain coordination — how to sequence contracts and design cut-off policies across multiple tiers so that the whole supply chain achieves near-optimal performance. More recently, I have turned to <em>platform financing and product returns</em>: cash-constrained sellers on platforms like Amazon and Alibaba face a tension between accepting platform credit and the platform's return policies that can undermine their profitability. Ongoing work also examines ex-ante incentives versus ex-post penalties in partner selection under commitment uncertainty — a question that arises whenever a firm must choose a supplier before observing whether that supplier will honour its commitments.</p>
+      </div>
+      <aside>
+        <p class="sidebar-label">Selected Papers</p>
+        <div class="paper-card">
+          <div class="paper-title">Managing Industry 4.0 Supply Chains with Innovative and Traditional Products: Contract Cessation Points and Value of Information</div>
+          <div class="paper-meta">Biswas, Singh, <em>Tiwari</em>, Choi, Pethe · <em>European Journal of Operational Research</em>, 316(2), 539–555, 2024</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Multi-echelon Supply Chain Coordination: Contract Sequence and Cut-off Policies</div>
+          <div class="paper-meta">Biswas, Gupta, <em>Tiwari</em>, Talluri · <em>International Journal of Production Economics</em>, 259, 2023</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Ex-ante Incentives vs Ex-post Penalties in Partner Selection under Commitment Uncertainty</div>
+          <div class="paper-meta">Chatterjee, Mukherjee, Mandal, <em>Tiwari*</em> · <em>Journal of the Operational Research Society</em>, 2026 (Accepted)</div>
+          <span class="paper-tag">New</span>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Interplay Between Platform Financing and Product Returns: Implications for Cash-Constrained Sellers</div>
+          <div class="paper-meta">Rath, Basu, Mandal, <em>Tiwari*</em> · <em>EJOR</em>, Major Revision</div>
+        </div>
+        <div class="collab-strip">
+          <strong>Co-authors &amp; Collaborators</strong>
+          Indranil Biswas (NEOMA Business School) · Tsan-Ming Choi (Univ. of Liverpool) · Srinivas Talluri (Michigan State) · Prasenjit Mandal (NEOMA Business School)
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Stream 2 -->
+  <div class="stream" id="stream-sustainability">
+    <div class="stream-header">
+      <span class="stream-number">02</span>
+      <h3 class="stream-title">Sustainability, Inclusion &amp; Ethical Governance in Supply Chains</h3>
+    </div>
+    <div class="stream-body">
+      <div class="stream-prose">
+        <p>Global supply chains carry with them histories of exploitation, environmental harm, and structural inequality. My work in this stream takes seriously the idea that operations researchers have something important to say about how supply chains can be made more responsible — not through wishful thinking, but through rigorous analysis of incentives, governance structures, and the conditions under which ethical outcomes actually emerge.</p>
+        <p>One major thread concerns <em>modern slavery and forced labour</em> in agrifood supply chains. Working with colleagues at UIR Rabat and EDHEC, I have developed frameworks for understanding how governance configurations interact to either suppress or inadvertently enable labour exploitation in complex, informal supply chains, particularly in Africa. A recent paper in the <em>Journal of Business Research</em> uses Extreme Value Theory to model modern slavery as a <em>tail risk</em> — treating the financial exposure of firms in ESG-vulnerable sectors (agrifood, extractives, financial services) as analogous to catastrophic loss events in risk modelling.</p>
+        <div class="pull-quote">"Modern slavery is not merely an ethical failure but a quantifiable financial tail risk — one that ESG frameworks, properly constructed, can price and mitigate."</div>
+        <p>A complementary thread examines how <em>board-level gender diversity</em> shapes firms' environmental supplier governance. Using large-sample archival data, this work shows that companies with greater female board representation adopt more stringent supplier sustainability requirements — not simply because of regulatory pressure, but because diverse boards change the information-processing and incentive structures that drive CSR strategy. I am also engaged in work on <em>circular economy transitions</em> and the adoption of Industry 4.0 technologies for sustainability in the textile sector, combining empirical SEM analysis with optimisation frameworks.</p>
+      </div>
+      <aside>
+        <p class="sidebar-label">Selected Papers</p>
+        <div class="paper-card">
+          <div class="paper-title">Modeling Financial Risk to Modern Slavery Vulnerable Sectors: ESG, Agrifood, and Financial</div>
+          <div class="paper-meta">Garra, Belhadi, <em>Tiwari*</em>, Kamble, Jebli · <em>Journal of Business Research</em>, 209, 116096, 2026</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">From Linear to Circular Sustainable Supply Chain Network Optimization: Toward a Conceptual Framework</div>
+          <div class="paper-meta">Echefaj et al., <em>Tiwari</em> · <em>Production Planning &amp; Control</em>, 36(6), 723–747, 2025</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Governing Sustainability in the Supply Chain: How CSR Strategy and Sustainability Committees Shape Supplier Policies</div>
+          <div class="paper-meta"><em>Tiwari*</em>, Gull, Sharma, Ali-Rind, Thatcher · <em>Journal of Operations Management</em>, Major Revision</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">From the Boardroom to the Supply Chain: Environmental Supplier Governance and Gender Diversity</div>
+          <div class="paper-meta">Gull, <em>Tiwari*</em>, Nadeem, Sharma · Target: <em>Journal of Operations Management</em> (Ready for Submission)</div>
+        </div>
+        <div class="collab-strip">
+          <strong>Co-authors &amp; Collaborators</strong>
+          Amine Belhadi (UIR Rabat Business School) · Sachin Kamble (EDHEC Business School) · T.R. Browning (TCU) · A.A. Gull
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Stream 3 -->
+  <div class="stream" id="stream-healthcare">
+    <div class="stream-header">
+      <span class="stream-number">03</span>
+      <h3 class="stream-title">Healthcare Supply Chains: Efficiency, Automation &amp; Resilience</h3>
+    </div>
+    <div class="stream-body">
+      <div class="stream-prose">
+        <p>Healthcare supply chains are among the most consequential and least well-understood in operations management. Failures — a stockout of surgical consumables, a delay in medication delivery — translate directly into patient harm. At the same time, healthcare institutions operate under relentless pressure to reduce costs, making the tension between service level and efficiency unusually acute.</p>
+        <p>My engagement with healthcare operations began in Singapore, where I led a large multi-year programme of research and industrial projects with the National Healthcare Group, SingHealth, and other institutions, funded by the National Robotics Programme Office (S$3M). The core question was: how can hospitals redesign their internal logistics systems, replacing manual material handling with Automated Guided Vehicles (AGVs) and robotics, without disrupting patient care during the transition? My team developed <em>simulation-based digital twins</em> of hospital supply chains in Simio — models that replicated the real-time flow of materials through wards, pharmacies, and sterilisation units. Optimising these simulations, we identified the optimal number and routing of AGVs for each clinical setting and quantified the productivity gains from automation.</p>
+        <div class="pull-quote">"The future hospital is not just a building with better equipment — it is a logistics network, continuously optimised, that redirects human attention from material handling to patient care."</div>
+        <p>A second project, funded by AI Singapore (S$250K with National Innovation Health Centre), developed machine learning algorithms for <em>medical consumables prediction</em> — using inpatient health records to anticipate what consumables each patient is likely to need during their stay. This resulted in a web-based deployment tool built in Dash-Plotly. More recent theoretical work examines IoT-enabled inventory systems for perishable healthcare goods, and a working paper in progress explores how blockchain-enabled data-sharing platforms and large language models might be integrated to support clinical analytics in high-equivocality settings.</p>
+      </div>
+      <aside>
+        <p class="sidebar-label">Selected Papers &amp; Projects</p>
+        <div class="paper-card">
+          <div class="paper-title">Internet of Things of Perishable Inventory Management System: Application and Managerial Insights for MSMEs</div>
+          <div class="paper-meta">Maheshwari, Kamble, Pundir, Belhadi, Ndubisi, <em>Tiwari</em> · <em>Annals of Operations Research</em>, 350, 395–423, 2025</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Healthcare Supply Chain Automation: Simulation-based Optimisation of AGV Deployment</div>
+          <div class="paper-meta">Industrial Project · National Robotics Programme, Singapore · S$3M · 2017–2019</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">AI/ML Algorithm for Medical Consumables Prediction</div>
+          <div class="paper-meta">Industrial Project · National Innovation Health Centre · S$250K · 2020–2021</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Healthcare Data-Sharing Platform: Consortium Blockchain for LLM-Based Clinical Analytics</div>
+          <div class="paper-meta">Lei, <em>Tiwari</em>, Jha, Ren, Ma · Target: <em>Information Systems Research</em> (Working Paper, 90%)</div>
+        </div>
+        <div class="collab-strip">
+          <strong>Industrial Partners</strong>
+          National Healthcare Group · SingHealth · Micron Technology · National Robotics Programme Office, Singapore
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Stream 4 -->
+  <div class="stream" id="stream-technology">
+    <div class="stream-header">
+      <span class="stream-number">04</span>
+      <h3 class="stream-title">Disruptive Technologies: Blockchain, AI &amp; Digital Transformation</h3>
+    </div>
+    <div class="stream-body">
+      <div class="stream-prose">
+        <p>My approach to disruptive technologies is deliberately sceptical in the best sense: I ask not whether a technology is exciting, but under what conditions it actually improves supply chain performance, and for whom. This leads to work that is more technically precise and more practically useful than general advocacy for adoption.</p>
+        <p>My work on <em>blockchain technology</em> spans empirical and theoretical approaches. A widely cited paper in <em>Transportation Research Part E</em> (132+ Scopus citations) examined logistics company managers' perspectives on blockchain adoption for 3PL operations, documenting the practical barriers — interoperability, cost, data quality, and competitor reluctance — that prevent blockchain from delivering its theoretical promise. We used these insights to develop a decision roadmap firms can use to evaluate whether blockchain is appropriate for their context. A new paper in the <em>International Journal of Production Research</em> develops a <em>dynamic Stackelberg differential game</em> modelling how blockchain-enabled transparency affects investment decisions in low-carbon supply chains, revealing a fundamental tension: transparency can reduce information asymmetry but also changes strategic dynamics in ways that may reduce participation incentives.</p>
+        <p>A separate thread examines <em>generative AI and platform economics</em>. A 2025 paper in <em>IJPE</em> is among the first to formally model how Gen-AI might promote community group buying, using a tripartite evolutionary game. Ongoing work examines how AI transparency requirements interact with consumer data monetisation and privacy regulation. A 2024 paper in <em>IJPE</em> on supply chain digitalization and COVID-19 uses institutional and contingency theory to explain why some firms were better positioned to digitalize quickly when the pandemic struck — showing that digital transformation is shaped profoundly by institutional environment and prior relational investments, not technology alone.</p>
+      </div>
+      <aside>
+        <p class="sidebar-label">Selected Papers</p>
+        <div class="paper-card">
+          <div class="paper-title">Blockchain and 3PLs for Global Supply Chains: Stakeholders' Perspectives and Decision Roadmap</div>
+          <div class="paper-meta"><em>Tiwari</em>, Sharma, Choi, Lim · <em>Transportation Research Part E</em>, 170, 2023</div>
+          <span class="paper-tag">132+ Citations</span>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Blockchain-Enabled Transparency in Low-Carbon Supply Chains: A Dynamic Stackelberg Differential Game Approach</div>
+          <div class="paper-meta">El Harraki, Zkik, Belhadi, <em>Tiwari*</em>, Kamble · <em>Int'l Journal of Production Research</em>, 2026</div>
+          <span class="paper-tag">New</span>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Responsible Supplier Matchmaking in Digital Manufacturing: Integrating Preference-Based Fairness with LLM-Enhanced Decision Systems</div>
+          <div class="paper-meta">Zkik, Belhadi, <em>Tiwari*</em>, Kamble · <em>IJPE</em>, 2026 (Accepted)</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Can Gen-AI Promote Community Group Buying? A Tripartite Evolutionary Game Analysis</div>
+          <div class="paper-meta">Zhou, Zhang, <em>Tiwari</em>, Huang, Basu · <em>IJPE</em>, 291, 109721, 2025</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Digitalization &amp; COVID-19: An Institutional-Contingency Theoretic Analysis of Supply Chain Digitalization</div>
+          <div class="paper-meta"><em>Tiwari</em>, Sharma, Jha · <em>IJPE</em>, 267, 109063, 2024</div>
+        </div>
+        <div class="collab-strip">
+          <strong>Co-authors &amp; Collaborators</strong>
+          Pankaj Sharma (UNSW Canberra) · A.K. Jha (Trinity College Dublin) · Tsan-Ming Choi (Univ. of Liverpool) · Amine Belhadi (UIR Rabat) · Fuli Zhou (Zhengzhou Univ. of Light Industry)
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Stream 5 -->
+  <div class="stream" id="stream-climate">
+    <div class="stream-header">
+      <span class="stream-number">05</span>
+      <h3 class="stream-title">Climate Risk, Extreme Weather &amp; Supply Chain Resilience</h3>
+    </div>
+    <div class="stream-body">
+      <div class="stream-prose">
+        <p>Climate change is already disrupting supply chains in ways that operations management theory is only beginning to catch up with. Understanding how supply chains should be designed and governed to withstand these shocks — and how the cost of climate resilience should be shared across partners — is one of the most pressing questions in the field.</p>
+        <p>A recent paper in the <em>European Journal of Operational Research</em> (2025) takes a game-theoretic approach: we consider a supplier deciding whether to invest in <em>climate-specific assets</em> or generic assets, and model the interaction with a buyer's ordering behaviour using a dynamic game. Strikingly, when the probability of disruption is <em>high</em>, the supplier actually prefers generic investment — because the cost of climate-specific assets becomes difficult to recoup through higher prices. But when the probability is lower, a proactive supplier invests in climate-specific assets, and this investment itself serves as a credible signal to the buyer about the supplier's type — allowing buyers to identify reliable suppliers in climate-stressed environments without direct observation. A pooling equilibrium exists where all supplier types choose climate-specific investment, sustained through reciprocal behaviour.</p>
+        <p>A companion paper on <em>stock reallocation for repairable service parts under extreme weather disruptions</em> develops optimal reallocation policies for firms managing service networks where a regional depot can be knocked out entirely — directly applicable to utility companies, airlines, and defence contractors. More broadly, a paper in <em>IEEE Transactions on Engineering Management</em> applies Information Processing Theory to how firms use big data analytics during crises, showing that the value of analytics depends critically on the equivocality of the situation, not just information volume.</p>
+      </div>
+      <aside>
+        <p class="sidebar-label">Selected Papers</p>
+        <div class="paper-card">
+          <div class="paper-title">Managing Supply Chains Facing Extreme Weather: Supplier's Nature and Investment</div>
+          <div class="paper-meta">Biswas, Pagare, <em>Tiwari</em>, Choi · <em>European Journal of Operational Research</em>, 325(3), 457–473, 2025</div>
+          <span class="paper-tag">5 Citations</span>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Stock Reallocation Policy for Repairable Service Parts under Supply Disruptions Due to Extreme Weather Events</div>
+          <div class="paper-meta">Somarin, Sharma, <em>Tiwari*</em>, Chen · <em>IJPE</em>, 256, 108743, 2023</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Big Data Analytics for Crisis Management from an Information Processing Theory View</div>
+          <div class="paper-meta">Sharma, <em>Tiwari</em>, Choi, Kaul · <em>IEEE Trans. on Engineering Management</em>, 71, 2024</div>
+        </div>
+        <div class="collab-strip">
+          <strong>Co-authors &amp; Collaborators</strong>
+          Indranil Biswas (NEOMA Business School) · Tsan-Ming Choi (Univ. of Liverpool) · Pankaj Sharma (UNSW Canberra) · S. Chen (Arizona State)
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Stream 6 -->
+  <div class="stream" id="stream-analytics">
+    <div class="stream-header">
+      <span class="stream-number">06</span>
+      <h3 class="stream-title">Pricing, Inventory Optimisation &amp; Data-Driven Operations</h3>
+    </div>
+    <div class="stream-body">
+      <div class="stream-prose">
+        <p>Much of my earlier work was grounded in inventory theory — a classical area of operations research concerned with how firms should manage stock given uncertain demand, lead time variability, deterioration, and the availability of credit. While more technical in character than my current streams, it forms the analytical foundation for everything I do, and several papers from this period continue to be heavily cited.</p>
+        <p>A characteristic feature is its integration of <em>real-world frictions</em> into models that had previously assumed them away — for instance, two-level partial trade credits in joint pricing and inventory models for deteriorating items, where buyers receive credit from suppliers and then extend credit to their own customers, creating a nested financial structure that interacts with inventory decisions in non-trivial ways.</p>
+        <p>A more recent strand is data-driven and behavioural. A paper in the <em>Journal of the Operational Research Society</em> (2025) examines <em>dynamic pricing with demand learning</em>, incorporating <em>sticky fairness concerns</em>: consumers who perceive prices as unfair remember and punish the retailer in future periods, creating a dynamic in which short-term exploitation of demand uncertainty undermines long-run profitability. The model produces a data-driven pricing policy that navigates the exploitation-exploration trade-off while remaining robust to consumer fairness perceptions. Methodologically, this stream draws on optimal control, dynamic programming, stochastic modelling, and evolutionary game theory.</p>
+      </div>
+      <aside>
+        <p class="sidebar-label">Selected Papers</p>
+        <div class="paper-card">
+          <div class="paper-title">Data-Driven Dynamic Pricing from the Perspective of 'Sticky' Fairness Concerns</div>
+          <div class="paper-meta">Rathore, <em>Tiwari*</em> · <em>Journal of the Operational Research Society</em>, 2025 (Accepted)</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Pricing and Replenishment Strategy for a Perishable Product under Various Payment Schemes and Cap-and-Trade Regulation</div>
+          <div class="paper-meta">Shi, Zhang, <em>Tiwari*</em>, Yang · <em>Transportation Research Part E</em>, 174, 2023</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Joint Pricing and Inventory Model for Deteriorating Items with Expiration Dates under Two-level Partial Trade Credits</div>
+          <div class="paper-meta"><em>Tiwari</em>, Cárdenas-Barrón, Goh, Shaikh · <em>IJPE</em>, 200(1), 16–36, 2018</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">Big Data Analytics in Supply Chain Management between 2010 and 2016: Insights to Industries</div>
+          <div class="paper-meta"><em>Tiwari</em>, Wee, Daryanto · <em>Computers &amp; Industrial Engineering</em>, 115(1), 319–330, 2018</div>
+        </div>
+        <div class="collab-strip">
+          <strong>Co-authors &amp; Collaborators</strong>
+          L.E. Cárdenas-Barrón (Tecnológico de Monterrey) · C.K. Jaggi (Univ. of Delhi) · H.M. Wee (Chung Yuan Christian Univ.)
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     POSITIONS & EDUCATION
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-positions" role="tabpanel" aria-labelledby="btn-positions">
+<section id="positions">
+  <h2>Academic Appointments</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-dates">Jan 2024 – present</span>
+      <div><div class="tl-role">Senior Lecturer in Operations Management</div><div class="tl-place">University of Bristol Business School, UK</div><div class="tl-note">Programme Director, MSc Business Analytics (Sep 2025–present)</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">Jan 2023 – May 2024</span>
+      <div><div class="tl-role">Visiting Faculty</div><div class="tl-place">Institute for Manufacturing (IfM), University of Cambridge, UK</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">Sep 2021 – Dec 2023</span>
+      <div><div class="tl-role">Associate Professor</div><div class="tl-place">ESSCA School of Management, France</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">Aug 2020 – Sep 2021</span>
+      <div><div class="tl-role">Senior Research Fellow</div><div class="tl-place">National University of Singapore</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">Feb 2017 – Aug 2020</span>
+      <div><div class="tl-role">Research Fellow</div><div class="tl-place">National University of Singapore</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">Oct 2018</span>
+      <div><div class="tl-role">Visiting Researcher</div><div class="tl-place">Tecnológico de Monterrey, Mexico</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">Aug 2016 – Jan 2017</span>
+      <div><div class="tl-role">Assistant Professor (Adjunct)</div><div class="tl-place">Dr. B.R. Ambedkar University Delhi, India</div></div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:3rem;">Education</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-dates">2016</span>
+      <div><div class="tl-role">PhD in Operations Research</div><div class="tl-place">Department of Operational Research, University of Delhi, India</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">2013</span>
+      <div><div class="tl-role">MPhil in Operations Research</div><div class="tl-place">Department of Operational Research, University of Delhi, India</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">2011</span>
+      <div><div class="tl-role">MSc in Operations Research</div><div class="tl-place">Department of Operational Research, University of Delhi, India</div></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-dates">2009</span>
+      <div><div class="tl-role">BSc (Hons) in Mathematics</div><div class="tl-place">Department of Mathematics, University of Delhi, India</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PUBLICATIONS
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-publications" role="tabpanel" aria-labelledby="btn-publications">
+<section id="publications">
+  <h2>Selected Publications</h2>
+
+  <div class="pub-group">
+    <div class="pub-group-label">ABS / CABS 4 — Top-tier journals</div>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">1</span>
+        <div>
+          <div class="pub-authors">V.A. Barbosa, <strong>S. Tiwari</strong>, R.A. Melo</div>
+          <div class="pub-title-pub">The pickup and delivery problem with time windows and scheduling on the edges</div>
+          <div class="pub-venue"><em>European Journal of Operational Research</em>, 2026 (Accepted) <span class="pub-badge">New</span></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">2</span>
+        <div>
+          <div class="pub-authors">I. Biswas, D. Pagare, <strong>S. Tiwari</strong>, T.M. Choi</div>
+          <div class="pub-title-pub">Managing supply chains facing extreme weather: Supplier's nature and investment</div>
+          <div class="pub-venue"><em>European Journal of Operational Research</em>, 325(3), 457–473, 2025</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">3</span>
+        <div>
+          <div class="pub-authors">I. Biswas, G. Singh, <strong>S. Tiwari</strong>, T.M. Choi, S. Pethe</div>
+          <div class="pub-title-pub">Managing Industry 4.0 Supply Chains with Innovative and Traditional Products: Contract Cessation Points and Value of Information</div>
+          <div class="pub-venue"><em>European Journal of Operational Research</em>, 316(2), 539–555, 2024</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">4</span>
+        <div>
+          <div class="pub-authors">X. Ma, S. Talluri, M. Ferguson, <strong>S. Tiwari</strong></div>
+          <div class="pub-title-pub">Strategic Production and Responsible Sourcing Decisions under Emissions Trading Scheme</div>
+          <div class="pub-venue"><em>European Journal of Operational Research</em>, 303(3), 1429–1443, 2022</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pub-group">
+    <div class="pub-group-label">ABS / CABS 3 — High-quality journals (selected)</div>
+    <ul class="pub-list">
+      <li class="pub-item">
+        <span class="pub-num">5</span>
+        <div>
+          <div class="pub-authors">I. El Harraki, K. Zkik, A. Belhadi, <strong>S. Tiwari*</strong>, S. Kamble</div>
+          <div class="pub-title-pub">Blockchain-Enabled Transparency in Low-Carbon Supply Chains: A Dynamic Stackelberg Differential Game Approach</div>
+          <div class="pub-venue"><em>International Journal of Production Research</em>, 2026 (Accepted) <span class="pub-badge">New</span></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">6</span>
+        <div>
+          <div class="pub-authors">K. Zkik, A. Belhadi, <strong>S. Tiwari*</strong>, S. Kamble</div>
+          <div class="pub-title-pub">Responsible Supplier Matchmaking in Digital Manufacturing: Integrating Preference-Based Fairness with LLM-Enhanced Decision Systems</div>
+          <div class="pub-venue"><em>International Journal of Production Economics</em>, 2026 (Accepted)</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">7</span>
+        <div>
+          <div class="pub-authors">H. Rathore, <strong>S. Tiwari*</strong></div>
+          <div class="pub-title-pub">Data-driven dynamic pricing from the perspective of 'sticky' fairness concerns</div>
+          <div class="pub-venue"><em>Journal of the Operational Research Society</em>, 2025 (Accepted)</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">8</span>
+        <div>
+          <div class="pub-authors"><strong>S. Tiwari</strong>, P. Sharma, T.M. Choi, A. Lim</div>
+          <div class="pub-title-pub">Blockchain and 3PLs for Global Supply Chains: Stakeholders' Perspectives and Decision Roadmap</div>
+          <div class="pub-venue"><em>Transportation Research Part E</em>, 170, 103012, 2023 <span class="pub-badge">132+ Citations</span></div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">9</span>
+        <div>
+          <div class="pub-authors">I. Biswas, R. Gupta, <strong>S. Tiwari</strong>, S. Talluri</div>
+          <div class="pub-title-pub">Multi-echelon supply chain coordination: Contract sequence and cut-off policies</div>
+          <div class="pub-venue"><em>International Journal of Production Economics</em>, 259, 108823, 2023</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">10</span>
+        <div>
+          <div class="pub-authors"><strong>S. Tiwari</strong>, P. Sharma, A. Jha</div>
+          <div class="pub-title-pub">Digitalization &amp; COVID-19: An Institutional-Contingency Theoretic Analysis of Supply Chain Digitalization</div>
+          <div class="pub-venue"><em>International Journal of Production Economics</em>, 267, 109063, 2024</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">11</span>
+        <div>
+          <div class="pub-authors"><strong>S. Tiwari</strong>, P. Sharma, T.M. Choi, A. Kaul</div>
+          <div class="pub-title-pub">Big Data Analytics for Crisis Management from an Information Processing Theory View</div>
+          <div class="pub-venue"><em>IEEE Transactions on Engineering Management</em>, 71, 10585–10599, 2024</div>
+        </div>
+      </li>
+      <li class="pub-item">
+        <span class="pub-num">12</span>
+        <div>
+          <div class="pub-authors"><strong>S. Tiwari</strong>, L.E. Cárdenas-Barrón, M. Goh, A.A. Shaikh</div>
+          <div class="pub-title-pub">Joint pricing and inventory model for deteriorating items with expiration dates and partial backlogging under two-level partial trade credits</div>
+          <div class="pub-venue"><em>International Journal of Production Economics</em>, 200(1), 16–36, 2018</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <p class="pub-more">Full list of 63+ publications available on <a href="https://scholar.google.com/citations?user=FocCLLYAAAAJ&hl=en" target="_blank">Google Scholar</a> and the <a href="https://research-information.bris.ac.uk/en/persons/sunil-tiwari/publications/" target="_blank">Bristol Research Portal</a>. Papers currently under review at <em>Journal of Operations Management</em> (×3), <em>Information Systems Research</em>, <em>Production and Operations Management</em> (×2), <em>Journal of Supply Chain Management</em> (×2), and <em>European Journal of Operational Research</em>.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     GRANTS
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-grants" role="tabpanel" aria-labelledby="btn-grants">
+<section id="grants">
+  <h2>Research Grants &amp; Industrial Projects</h2>
+  <ul class="grant-list">
+    <li class="grant-item"><div class="grant-amount">S$2.5M</div><div><div class="grant-title">Mitigating Risks in Temperature-controlled Supply Chains Using Blockchain Technology</div><div class="grant-meta">A*STAR, Singapore · 3 Years · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$2.5M</div><div><div class="grant-title">Shared Urban Grid Logistics Platform Using Virtual Singapore (Inland Container Flow, Warehousing &amp; Transport)</div><div class="grant-meta">National Research Foundation (NRF), Singapore · 2 Years · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$2.5M</div><div><div class="grant-title">Collaborative Optimization for Last-Mile Delivery Logistics and Its Implementation</div><div class="grant-meta">A*STAR, Singapore · 3 Years · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$2.5M</div><div><div class="grant-title">Collaborative Secure Urban Logistics: A Solution to Asset Utilization</div><div class="grant-meta">A*STAR, Singapore · 3 Years · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$1.5M</div><div><div class="grant-title">Strategic Redesign and Framing of Delivery Networks and Warehouse/Fulfilment Centre Scenarios</div><div class="grant-meta">Lazada (Industry Partner) · 1 Year · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$271K</div><div><div class="grant-title">Intelligent Analysis of Bed Management in Hospital</div><div class="grant-meta">AI Singapore · 15 Months · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$271K</div><div><div class="grant-title">Intelligent Last Mile in e-Commerce</div><div class="grant-meta">AI Singapore · 15 Months · Principal Research Investigator</div></div></li>
+    <li class="grant-item"><div class="grant-amount">S$260K</div><div><div class="grant-title">Material Predictive Consumption Analytics</div><div class="grant-meta">ASM Pvt. Limited (Industry Partner) · 1 Year · Principal Research Investigator</div></div></li>
+  </ul>
+  <p style="margin-top:1.4rem; font-size:0.86rem; color:var(--ink-muted);">Additional industrial collaborations include Procter &amp; Gamble SK-II supply chain optimisation (S$2.5M), Marina Bay Sands automation planning (S$1.5M), and National Healthcare Group hospital logistics robotics (S$3M via National Robotics Programme, Singapore).</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TEACHING
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-teaching" role="tabpanel" aria-labelledby="btn-teaching">
+<section id="teaching">
+  <h2>Teaching</h2>
+  <div class="teaching-block">
+    <h3>University of Bristol Business School &nbsp;(Jan 2024 – present)</h3>
+    <div class="course-row"><span class="course-name">Business Analytics Consulting Project</span><span class="course-role">Unit Director (MSc)</span></div>
+    <div class="course-row"><span class="course-name">Supply Chain Analytics</span><span class="course-role">Deputy Unit Director (MSc)</span></div>
+    <div class="course-row"><span class="course-name">Operations Management</span><span class="course-role">MSc</span></div>
+  </div>
+  <div class="teaching-block">
+    <h3>ESSCA School of Management &nbsp;(Sep 2021 – Dec 2023)</h3>
+    <div class="course-row"><span class="course-name">Decision Science</span><span class="course-role">Module Leader (MSc)</span></div>
+    <div class="course-row"><span class="course-name">Supply Chain Management</span><span class="course-role">MSc</span></div>
+    <div class="course-row"><span class="course-name">Supply Chain Risk Management</span><span class="course-role">MSc</span></div>
+    <div class="course-row"><span class="course-name">Introduction to Operations Management</span><span class="course-role">Undergraduate</span></div>
+    <div class="course-row"><span class="course-name">Introduction to Logistics and Supply Chain Management</span><span class="course-role">Undergraduate</span></div>
+  </div>
+  <div class="teaching-block">
+    <h3>University of Delhi &nbsp;(Jul 2014 – Jan 2017)</h3>
+    <div class="course-row"><span class="course-name">Supply Chain Management</span><span class="course-role">MSc</span></div>
+    <div class="course-row"><span class="course-name">Inventory and Production Management</span><span class="course-role">MSc</span></div>
+    <div class="course-row"><span class="course-name">Network Optimisation</span><span class="course-role">MSc</span></div>
+  </div>
+  <p style="font-size:0.86rem; color:var(--ink-muted);">I supervise approximately 10 MSc dissertation students per year at Bristol, in addition to PhD examination committees and external examiner roles at institutions including IIM Lucknow, IIT Bombay, and the University of Pretoria.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SERVICE
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-service" role="tabpanel" aria-labelledby="btn-service">
+<section id="service">
+  <h2>Professional Activities &amp; Service</h2>
+  <div class="pro-cols">
+    <div>
+      <div class="pro-block">
+        <h3>Editorial Roles</h3>
+        <ul>
+          <li><span>Department Editor, <em>IEEE Trans. on Engineering Management</em></span><span class="tag-year">2025–</span></li>
+          <li><span>Associate Editor, <em>Journal of the Operational Research Society</em></span><span class="tag-year">2025–</span></li>
+          <li><span>Editorial Review Board, <em>Decision Sciences</em></span><span class="tag-year">2026–</span></li>
+          <li><span>Associate Editor, <em>Supply Chain Analytics</em></span><span class="tag-year">2022–</span></li>
+          <li><span>Associate Editor, <em>Int'l Transactions in Operational Research</em></span><span class="tag-year">2023–</span></li>
+          <li><span>Guest Editor, <em>Journal of the Operational Research Society</em></span><span class="tag-year">2024–</span></li>
+          <li><span>Guest Editor, <em>IEEE Trans. on Engineering Management</em></span><span class="tag-year">2025–</span></li>
+          <li><span>Guest Editor, <em>Journal of Cleaner Production</em></span><span class="tag-year">2024–</span></li>
+        </ul>
+      </div>
+      <div class="pro-block" style="margin-top:1.75rem;">
+        <h3>External Examiner</h3>
+        <ul>
+          <li><span>SSHRC (Social Sciences &amp; Humanities Research Council of Canada)</span><span class="tag-year">2023–</span></li>
+          <li><span>National Research Foundation (NRF), South Africa</span><span class="tag-year">2021–</span></li>
+        </ul>
+      </div>
+      <div class="pro-block" style="margin-top:1.75rem;">
+        <h3>Internal Leadership (Bristol)</h3>
+        <ul>
+          <li><span>Programme Director, MSc Business Analytics</span><span class="tag-year">2025–</span></li>
+          <li><span>Unit Director, Business Analytics Consulting Project</span><span class="tag-year">2025–</span></li>
+          <li><span>Research Seminar Coordinator, T&amp;O Group</span><span class="tag-year">2024–</span></li>
+          <li><span>Faculty Academic Misconduct Panel (FAMP) Member</span><span class="tag-year">2024–</span></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="pro-block">
+        <h3>Regular Reviewing</h3>
+        <ul>
+          <li><span><em>European Journal of Operational Research</em></span></li>
+          <li><span><em>International Journal of Production Economics</em></span></li>
+          <li><span><em>Transportation Research Part E</em></span></li>
+          <li><span><em>IEEE Trans. on Engineering Management</em></span></li>
+          <li><span><em>Journal of the Operational Research Society</em></span></li>
+          <li><span><em>Annals of Operations Research</em></span></li>
+          <li><span><em>Computers &amp; Operations Research</em></span></li>
+          <li><span><em>International Journal of Production Research</em></span></li>
+        </ul>
+      </div>
+      <div class="pro-block" style="margin-top:1.75rem;">
+        <h3>Ad Hoc Reviewing</h3>
+        <ul>
+          <li><span><em>Management Science</em></span></li>
+          <li><span><em>Journal of Operations Management</em></span></li>
+          <li><span><em>Production &amp; Operations Management</em></span></li>
+          <li><span><em>Decision Sciences</em></span></li>
+          <li><span><em>Naval Research Logistics</em></span></li>
+          <li><span><em>Academy of Management</em></span></li>
+        </ul>
+      </div>
+      <div class="pro-block" style="margin-top:1.75rem;">
+        <h3>Professional Memberships</h3>
+        <ul>
+          <li><span>Academy of Management</span><span class="tag-year">2024–</span></li>
+          <li><span>Production and Operations Management Society</span><span class="tag-year">2024–</span></li>
+          <li><span>Decision Science Institute</span><span class="tag-year">2024–</span></li>
+          <li><span>The Operational Research Society</span><span class="tag-year">2024–</span></li>
+          <li><span>OR Society of India (Lifetime)</span><span class="tag-year">2017–</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     AWARDS
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-awards" role="tabpanel" aria-labelledby="btn-awards">
+<section id="awards">
+  <h2>Awards &amp; Recognitions</h2>
+  <ul class="award-list">
+    <li class="award-item"><span class="award-year">2018</span><span class="award-text">Young Researcher Award — Society for Reliability Engineering, Quality and Operations Management (SREQOM)</span></li>
+    <li class="award-item"><span class="award-year">2017</span><span class="award-text">Dr. D.S. Kothari Postdoctoral Fellowship — University Grants Commission (UGC), India <em>(not availed)</em></span></li>
+    <li class="award-item"><span class="award-year">2017</span><span class="award-text">Postdoctoral Fellowship — Pusan National University, South Korea <em>(not availed)</em></span></li>
+    <li class="award-item"><span class="award-year">2013–15</span><span class="award-text">MHRD Government of India Scholarship for PhD studies</span></li>
+    <li class="award-item"><span class="award-year">2011–13</span><span class="award-text">MHRD Government of India Scholarship for MPhil studies</span></li>
+    <li class="award-item"><span class="award-year">—</span><span class="award-text">Outstanding Reviewer — <em>International Journal of Production Economics</em>, <em>Knowledge-Based Systems</em> &amp; <em>Computers and Electronics in Agriculture</em></span></li>
+  </ul>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════════ -->
+</div>
+<div class="tab-panel" id="tab-contact" role="tabpanel" aria-labelledby="btn-contact">
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-block">
+      <p>
+        <strong style="color:var(--ink); font-weight:500;">Dr Sunil Tiwari</strong><br>
+        Senior Lecturer in Operations Management<br>
+        Programme Director, MSc Business Analytics<br><br>
+        University of Bristol Business School<br>
+        11–13 Tyndalls Park Road<br>
+        Clifton, Bristol BS8 1PY, United Kingdom<br><br>
+        Email: <a href="mailto:sunil.tiwari@bristol.ac.uk">sunil.tiwari@bristol.ac.uk</a><br>
+        Tel: +44 (0)117 455 4422<br>
+        Mobile: +44 (0)78 99 41 21 41
+      </p>
+    </div>
+    <div class="contact-block">
+      <strong style="display:block; color:var(--ink); font-weight:500; margin-bottom:0.6rem;">Online Profiles</strong>
+      <p>
+        <a href="https://scholar.google.com/citations?user=FocCLLYAAAAJ&hl=en" target="_blank">Google Scholar</a><br>
+        <a href="https://www.bristol.ac.uk/people/person/Sunil-Tiwari-2fe86b81-80f7-4969-a61e-0c24efae16f7/" target="_blank">University of Bristol Profile</a><br>
+        <a href="https://research-information.bris.ac.uk/en/persons/sunil-tiwari/publications/" target="_blank">Bristol Research Portal (Full Publications)</a><br>
+        <a href="https://www.linkedin.com/in/sunil-tiwari-2a23a83a/" target="_blank">LinkedIn</a><br>
+        <a href="https://orcid.org/0000-0002-0499-2794" target="_blank">ORCID: 0000-0002-0499-2794</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</main>
+
+
+<footer>
+  <p>Last updated: April 2026 &nbsp;·&nbsp; Sunil Tiwari, University of Bristol Business School</p>
+</footer>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  var btn = document.getElementById('btn-' + id);
+  var panel = document.getElementById('tab-' + id);
+  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected','true'); }
+  if (panel) { panel.classList.add('active'); }
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
